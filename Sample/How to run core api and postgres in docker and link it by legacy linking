@@ -1,0 +1,6 @@
+#Buid image for api server
+docker build -f api-server.dockerfile -t api-server .
+#Run postgres container
+docker run -d --name my-postgres -p 5432:5432 -e POSTGRES_USER=postgres -e POSTGRES_db=postgres -e POSTGRES_PASSWORD=password postgres
+#Run api-server linked to [pstgres]
+docker run -d -p 5000:5000 --link my-postgres:postgres api-server
