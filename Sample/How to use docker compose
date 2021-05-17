@@ -1,0 +1,10 @@
+#Build images
+docker-compose build
+#Run containers (-d in background mode)
+docker-compose up
+#Stop containers and remove
+docker-compose down
+#Logs
+docker-compose logs
+#Containers
+docker-compose ps
