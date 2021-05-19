@@ -1,0 +1,6 @@
+#Create repository https://hub.docker.com/ 
+name:api_server username:viktor11prykhidko
+#Add tag to image 
+docker tag api_server viktor11prykhidko/api_server:123
+#push
+git push viktor11prykhidko/api_server:123

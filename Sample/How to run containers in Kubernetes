@@ -1,0 +1,28 @@
+#Install chocolate un PowerShell
+Set-ExecutionPolicy Bypass -Scope Process -Force; [System.Net.ServicePointManager]::SecurityProtocol = [System.Net.ServicePointManager]::SecurityProtocol -bor 3072; iex ((New-Object System.Net.WebClient).DownloadString('https://chocolatey.org/install.ps1'))
+#Install Kuberneted kompose
+choco install kubernetes-kompose
+#Run single container example 
+kubectl run nginx-server --image=nginx:alpine
+#Port forward 
+kubectl port-forward nginx-server 8080:80
+#To get deploymens/service/pods
+kubectl get deployments
+kubectl get services
+kubectl get services
+#To delete deploymens/service/pods
+kubectl delete deployment deployment_name
+
+#From docker compose to kubernetes
+#Create folder for files .k8s
+#Run command in the same directory as your docker-compose.yaml file to genereate files
+kompose convert -o ./.k8s/
+#Set apiVersion in networking policy file (temporary)
+apiVersion: networking.k8s.io/v1
+#Run containers from generated files 
+kubectl apply -f ./.k8s/
+NOW PROBLEM WIHT dotnet pod fail to pull image
+#Remove all kuberneter resources 
+kubectl delete -f ./.k8s/
+#Troubleshooting
+kubectl describe pod pod_name

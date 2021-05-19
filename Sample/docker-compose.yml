@@ -1,10 +1,8 @@
-﻿version: '3.8'
+﻿version: '3'
 
 services:  
  dotnetcore:
-  build: 
-   context: .
-   dockerfile: api-server.dockerfile
+  image: viktor11prykhidko/api-server:123
   container_name: api_server
   ports:
    - "5000:5000"
