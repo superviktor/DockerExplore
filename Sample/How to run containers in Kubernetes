@@ -21,7 +21,9 @@ kompose convert -o ./.k8s/
 apiVersion: networking.k8s.io/v1
 #Run containers from generated files 
 kubectl apply -f ./.k8s/
-NOW PROBLEM WIHT dotnet pod fail to pull image
+NOW PROBLEM WIHT DOTNET POD RUN (FAIL TO PULL IMAGE)
+#Do port forward 
+kubectl port-forward pod_name 8080:80 ? or 8080:85000?
 #Remove all kuberneter resources 
 kubectl delete -f ./.k8s/
 #Troubleshooting
