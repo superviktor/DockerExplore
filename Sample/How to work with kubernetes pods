@@ -1,0 +1,25 @@
+#Run pod with name my-nginx that contains container from image nginx:alpine
+kubectl run my-nginx --image=nginx:alpine
+#Get pods
+kubectl get pods
+#Forward external port 8080 to internal pod port 80 (check 8080 from browser)
+kubectl port-forward my-nginx 8080:80
+#Delete pod 
+kubectl delete pod my-nginx
+
+#Or we can use nginx.pod.yml file
+#Run pod from yml (google params :))
+kubectl create -f nginx.pod.yml --validate=true --save-config / kubectl apply -f nginx.pod.yml
+#Describe pod 
+kubectl describe pod my-nginx
+#Apply pod after editing yaml
+kubectl apply -f nginx.pod.yml
+#Go inside pod's container
+kubectl exec my-nginx -it sh
+#Exit container
+exit
+#Delete pod using yml file
+kubectl delete -f nginx.pod.yml
+
+#Pod health
+#Liveness (when should container restart) and readiness (when scontainer should start receiving traffic) probe see yml
