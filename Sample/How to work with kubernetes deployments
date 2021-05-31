@@ -1,0 +1,15 @@
+#ReplicaSet is declarative way to manage pods
+#Deployment is declarative way to manage pods using ReplicaSet
+#Create deploymennt from yml file
+kubectl create/apply -f nginx.deployment.yml
+#Get deployments
+kubectl get deployments
+#Describe delployment
+kubectl describe deployment my-nginx
+#Get labels for deployments
+kubectl get deployments --show-labels
+#Scale deployment pods to 5
+kubectl scale deployment my-nginx --replicas=5
+kubeclt scale -f nginx.deployment.yml --replicas=5
+#Delete deployment 
+kubectl delete deployment my-nginx

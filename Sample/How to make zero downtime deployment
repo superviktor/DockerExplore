@@ -1,0 +1,6 @@
+#Preconditions: few versions of container image, separate delployment files foreach any section
+#Run version 1
+#kubectl apply -f v1.deployment.yml
+#Run version 2
+#kubectl apply -f v2.deployment.yml
+...
