@@ -1,0 +1,25 @@
+#Service is single point entry to access one or more pods
+#Simpliest way to reach pod 
+kubectl port-forward deployment/my-nginx 8080:80
+
+#How to be able to call pod from another pod
+#Run pods that are going to be associated wiht service
+kubectl apply -f .\nginx.deployment.yml
+#Run service from yml 
+kubectl apply -f .\clusterIP.service.yml
+#Run out of service pod that is going to talk to service (use another label)
+kubectl apply -f nginx.pod.yml
+#Go inside out of service pod
+kubectl exec my-other-nginx -it sh
+#Add curl to be able to do http requests
+apk add curl
+#Ping service by service name or ip
+curl http://nginx-clusterip:8080
+curl http://10.100.165.168:8080
+#Delete service 
+kubectl delete -f .\clusterIP.service.yml
+
+#Run nodeport service
+kubectl apply -f .\nodeport.service.yml
+#Check http://localhost:31000/ to access
+#Same for loadbalancer
