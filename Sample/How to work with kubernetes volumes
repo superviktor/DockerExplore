@@ -1,0 +1,12 @@
+#Empty dir volume lifecycle tied to pod 
+#nginx-alpine-emptyDir.pod.yml two containers have access to the same volume one is reading another is writing
+kubectl apply -f nginx-alpine-emptyDir.pod.yml
+kubectl port-forward nginx-alpine-volume 8080:80
+
+#Host path
+#docker-hostPath.pod.yml container running docker demon and volume
+kubectl apply -f .\docker-hostPath.pod.yml
+#Use kubectl describe to get info about volumes
+#Shell into pod to run commands
+kubectl exec docker-volume -it sh
+#Go with docker commands
