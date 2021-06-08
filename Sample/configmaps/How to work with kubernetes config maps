@@ -1,0 +1,24 @@
+#Build image
+docker build -f node-simple.dockerfile -t node-configmap .
+#Create config map form environment config file 
+kubectl create cm app-settings --from-env-file=settings.config
+#Get config maps
+kubectl get cm
+#Output config map by name
+kubectl get cm app-settings -o yaml
+#Deploy from file (config map is used in deployment, values are used in server.js)
+kubectl apply -f .\node.deployment.yml
+#Port forward pod by name 
+kubectl port-forward node-configmap-577f5d6b98-49hhf 9000
+#Visit http://localhost:9000/
+
+#Create config map from file 
+kubectl create -f settings.configmap.yml
+#Create config map using data from file 
+kubectl create config-map my-config --from-file=settings.config 
+#Create config map using data from evvironment file 
+kubectl create config-map my-config --from-env-file=env-settings.config
+#Create config map from literal
+kubectl create confing-map my-config --from-literal=apiUrl=https://my-api
+
+
