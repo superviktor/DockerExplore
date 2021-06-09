@@ -1,0 +1,6 @@
+#Get logs for pod-name
+kubectl logs pod-name
+#Get details and events
+kubectl describe pod-name
+#Shell into a pod
+kubectl exec pod-name -it sh
